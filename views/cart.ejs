@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width initial-scale=1" />
+        <title>Sportska zona - košarica</title>
+        <link rel="stylesheet" type="text/css" href="/styles/cart.css" />
+        <link rel="icon" type="image/png" href="/images/sportska-zona-logo.png" />
+    </head>
+    <body>
+        <header>
+            <div class="logo-container-ind">
+                <a href="/home/getProducts/0" class="logo-container-ind">
+                    <img src="/images/sportska-zona-logo.png" class="logo-ind">
+                </a>
+            </div>
+            <div class="current-category">
+                <h1>Sportska zona - košarica</h1>
+            </div>
+
+            
+            <a href="/cart/getAll" class="cart-container-ind">
+                <div class="cart-icon-ind">
+                    <div class="cart-counter"><%= total %></div>                  
+                </div>
+                    
+            <div class="search-icon-ind"></div>
+        </a>
+        </header>
+        <section>
+            <div class="mid-container">
+                <h1>Dobrodošli u najbolji sportski dućan</h1>
+            </div>
+            <div class="cart-container">
+                <% if (cart) { %>
+                    <% cart.forEach(function(item) { %>
+                      <div class="cart-item">
+                        <div class="product-name"><%= item.id %></div>
+                        <div class="product-count"><%= item.count %></div>
+                        <div class="buttons">
+                            <form action="/cart/remove/<%= item.id%>"  method="post">
+                                <input type="hidden" name="id" value="<%= item.id %>">
+                                <input type="hidden" name="count" value="<%= item.count %>">
+                                <input type="submit" value="-" class="decrease-btn">
+                            </form>
+                            <form action="/cart/add/<%= item.id %>" method="post">
+                                <input type="hidden" name="id" value="<%= item.id %>">
+                                <input type="hidden" name="count" value="<%= item.count %>">
+                                <input type="submit" value="+" class="increase-btn" >
+                                
+                            </form>
+                          </div>
+                      </div>
+
+                    <% }) %>
+                  <% } %>
+            </div>
+        </section>
+    </body>
+</html>

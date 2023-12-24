@@ -1,0 +1,209 @@
+* {
+    box-sizing : border-box;
+}
+
+container{
+    display: flex;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: lightblue;
+    margin: 0;
+}
+header {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em;
+
+}
+
+.logo-container-ind{
+    width:10%;
+}
+
+.logo-ind{
+    height: 5em;
+    width: 80%;
+    border-radius: 1em;
+}
+
+.current-category {
+    width: 80%;
+    height: 5em;
+    font-weight: bold;
+    border-color: black;
+    border-style: solid;
+    border-radius: 1em;
+    background-color: darkcyan;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.cart-container-ind {
+    width:10em;
+    height: 5em;
+    padding:10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-color: black;
+    border-style: solid;
+    border-radius: 1em;
+    background-color: darkcyan;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-icon-ind{
+    position: relative;
+    width:50%;
+    height: 100%;
+    padding: 10px;
+    background-image: url("../images/kosarica.svg");
+    background-repeat: no-repeat;
+}
+
+
+.cart-counter{
+    width: 8px;
+    height: 8px;
+    position:absolute;
+    right:0;
+    bottom: 0;
+}
+
+
+.search-icon-ind{
+    width: 45%;
+    height: 100%;
+    padding: 20px;
+    background-image: url("../images/search-ikona.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+nav {
+    width: 20%;
+    margin: 1em;
+    
+}
+
+.category-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-container li{
+    list-style-type: none;
+    padding: 1em;
+    border-color: black;
+    border-radius: 1em;
+    border-style: solid;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkcyan;
+}
+
+.down-container{
+    list-style: none;
+    padding: 1em;
+    border-color: black;
+    background-color: darkcyan;
+    border-radius: 1em;
+    border-style: solid;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+
+section {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 1em;
+}
+
+
+
+.mid-container{
+    margin: 1em;
+    height: 20%;
+    background-image: url("../images/naslovnica2.avif");
+    background-size: cover;
+    border-color: black;
+    border-style: solid;
+    border-radius: 1em;
+    text-align: center;
+}
+
+.mid-container h1{
+    color: darkcyan;
+    text-align: center;
+    font-size: 3em;
+}
+
+.bot-container{
+    margin: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
+    flex-direction: row;
+}
+
+.product {
+    width:80%;
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+    background-color: darkcyan;
+    border-color: black;
+    border-style: solid;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.product-image{
+    width: 80%;
+    object-fit: cover;
+}
+
+.product-count {
+    background-color: orangered;
+    border-radius: 100%;
+    width: 1em;
+    height: 1em;
+}
+
+
+
+@media(max-width: 1024px){
+    .bot-container{
+        margin: 1em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1em;
+        flex-direction: row;
+    
+    }
+
+    .mid-container h1{
+        color: darkcyan;
+        text-align: center;
+        font-size: 2em;
+    }
+}
+

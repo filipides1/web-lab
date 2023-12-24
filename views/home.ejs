@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width initial-scale=1" />
+        <title>Sportska zona</title>
+        <link rel="stylesheet" type="text/css" href="/styles/index.css" />
+        <link rel="icon" type="image/png" href="/images/sportska-zona-logo.png" />
+    </head>
+    <body>
+        <header>
+            <div class="logo-container-ind">
+                <a href="/home/getProducts/0" class="logo-container-ind">
+                    <img src="/images/sportska-zona-logo.png" class="logo-ind">
+                </a>
+            </div>
+            <div class="current-category">
+                <h2><%= kategorija.name %></h2>
+            </div>
+
+            <% var totalCount = 0; %>
+            <% if (session && session.cart) { %>
+                <% session.cart.forEach(function(item) { %>
+                    <% totalCount += parseInt(item.count); %>
+                <% }) %>
+            <% } %>
+
+            <a href="/cart/getAll" class="cart-container-ind">
+                    <div class="cart-icon-ind">
+                        <div class="cart-counter"><%= totalCount %></div>                  
+                    </div>
+                        
+                <div class="search-icon-ind"></div>
+            </a>
+        </header>
+        <container>
+            <nav>
+                <div>
+                    <ul class="category-container">
+                        <a href="/home/getProducts/<%= 0 %>"><li data-id="0">Nogomet</li></a>
+                        <a href="/home/getProducts/<%= 1 %>"><li data-id="1">Košarka</li></a>
+                        <a href="/home/getProducts/<%= 2 %>"><li data-id="2">Rukomet</li></a>
+                        <a href="/home/getProducts/<%= 3 %>"><li data-id="3">Tenis</li></a>
+                        <a href="/home/getProducts/<%= 4 %>"><li data-id="4">Skijanje</li></a>
+                        <a href="/home/getProducts/<%= 5 %>"><li data-id="5">Trčanje</li></a>
+                        <a href="/home/getProducts/<%= 6 %>"><li data-id="6">Planinarenje</li></a>
+                        <a href="/home/getProducts/<%= 7 %>"><li data-id="7">Kampiranje</li></a>
+                        <a href="/home/getProducts/<%= 8 %>"><li data-id="8">Boks</li></a>
+                        <a href="/home/getProducts/<%= 9 %>"><li data-id="9">Fitness</li></a>
+                    </ul>	
+                </div>
+                <div>
+                    <ul class="down-container">
+                        <li data-id="10">Kontakt</li>
+                        <li data-id="11">Newsletter</li>
+                        <li data-id="12">Pretplati se</li>
+                    </ul>
+                </div>
+            </nav>
+            <section>
+                <div class="mid-container">
+                    <h1>Dobrodošli u najbolji sportski dućan</h1>
+                </div>
+                
+                <div class="bot-container">
+                    <% if (products) { %> <% products.forEach(function(p, i) { %>
+                        <div class="product" data-id="<%= i %>">
+                            <img src="<%= p.image %>" class="product-image">
+                            <div class="product-name"><%= p.name %></div>
+                            
+                            <form action="/home/addCart/<%= p.name %>" method="post">
+                                <input type="hidden" name="id" value="<%= p.name %>">
+                                <input type="hidden" name="katId" value="<%= kategorija.id %>">
+                                <input type="hidden" name="count" value="1">
+                                <input type="submit" value="Dodaj u košaricu" class="btn" >
+                                
+                            </form>
+                            <% var productCount = 0; %>
+                            <% if (session && session.cart) { %>
+                                <% session.cart.forEach(function(item) { %>
+                                    <% if (item.id === p.name) { %>
+                                        <% productCount = item.count; %>
+                                    <% } %>
+                                <% }) %>
+                            <% } %>
+                            <div class="product-count">
+                                <%= productCount %>
+                            </div>
+                            
+                        </div>
+                    <% }) %>
+                    <% } %>
+                     
+                </div>
+            </section>
+        </container>
+    </body>
+</html>
